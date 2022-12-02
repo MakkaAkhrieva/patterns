@@ -25,4 +25,11 @@ class MemberFactory {
     standart: StandartMembership,
     premiun: PremiumMembership,
   };
+
+  create(name, type = 'simple') {
+    const Membership = MemberFactory.list[type] || MemberFactory.list.simple;
+    const member = new Membership(name);
+
+    return member;
+  }
 }
